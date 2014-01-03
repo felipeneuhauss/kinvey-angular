@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <script src="//da189i1jfloii.cloudfront.net/js/kinvey-html5-1.1.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <script src="js/access.js"></script>
+    <script src="todo.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+<div class="container">
+    <h2>Todo</h2>
+    <div ng-controller="TodoCtrl">
+        <span>{{remaining()}} of {{todos.length}} remaining</span>
+        [ <a href="" ng-click="archive()">archive</a> ]
+        <ul class="unstyled">
+            <li ng-repeat="todo in todos">
+                <input type="checkbox" ng-model="todo.done">
+                <span class="done-{{todo.done}}">{{todo.text}}</span>
+            </li>
+        </ul>
+        <form ng-submit="addTodo()">
+            <input type="text" ng-model="todoText" size="30" class="input-sm"
+                   placeholder="add new todo here">
+            <input class="btn-primary btn" type="submit" value="add">
+        </form>
+    </div>
+</div>
+</body>
+</html>
